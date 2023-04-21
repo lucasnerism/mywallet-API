@@ -1,12 +1,12 @@
 import Joi from "joi";
 
 export const signInSchema = Joi.object({
-  email: Joi.string().email().required(),
-  password: Joi.string().required()
+  email: Joi.string().email().trim().required(),
+  password: Joi.string().trim().required()
 });
 
 export const signUpSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().required().min(3)
+  name: Joi.string().trim().required(),
+  email: Joi.string().email().trim().required(),
+  password: Joi.string().trim().min(3).required()
 });

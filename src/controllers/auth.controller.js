@@ -1,5 +1,6 @@
 import { db } from "../database/database.connection.js";
 import bcrypt from "bcrypt";
+import { stripHtml } from "string-strip-html";
 import { v4 as uuid } from "uuid";
 
 export async function signIn(req, res) {
@@ -10,7 +11,7 @@ export async function signIn(req, res) {
     if (user && bcrypt.compareSync(password, user.password)) {
       const token = uuid();
       await db.collection("sessions").insertOne({ userId: user._id, token });
-      return res.send({ name: user.name, token });
+      return res.status(200).send({ name: user.name, token });
     }
     res.status(401).send("E-mail ou senha incorretos.");
   } catch (error) {
@@ -19,7 +20,9 @@ export async function signIn(req, res) {
 }
 
 export async function signUp(req, res) {
-  const { name, password, email } = req.body;
+  const { password } = req.body;
+  const name = stripHtml(req.body.name).result;
+  const email = stripHtml(req.body.email).result;
   const { user } = res.locals;
 
   try {
