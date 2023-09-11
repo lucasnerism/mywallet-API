@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const mongoClient = new MongoClient(process.env.DATABASE_URL);
+export const mongoClient = new MongoClient(process.env.DATABASE_URL);
 try {
   await mongoClient.connect();
   console.log("Database Connected");

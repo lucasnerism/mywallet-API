@@ -7,7 +7,7 @@ export async function signIn(req, res) {
   const { password } = req.body;
   const { user } = res.locals;
   try {
-    if (!user) res.status(404).send("E-mail ou senha incorretos.");
+    if (!user) return res.status(401).send("E-mail ou senha incorretos.");
     if (user && bcrypt.compareSync(password, user.password)) {
       const token = uuid();
       await db.collection("sessions").insertOne({ userId: user._id, token });
