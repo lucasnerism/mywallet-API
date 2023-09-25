@@ -1,7 +1,7 @@
 # MyWallet
 
 ## Description
-A basic finance management application. Made with express and JavaScript and MongoDB as database.
+A basic finance management application. Made with Express and JavaScript and MongoDB as database.
 + Allows for account creation and authentication
 + Create, update or delete incomes and outcomes.
 
