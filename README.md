@@ -1,7 +1,7 @@
 # MyWallet
 
 ## Description
-A basic finance management application.
+A basic finance management application. Made with express and JavaScript and MongoDB as database.
 + Allows for account creation and authentication
 + Create, update or delete incomes and outcomes.
 
@@ -38,7 +38,7 @@ $ npm install
 ```
 
 ## Create a Database
-Create a PostgreSQL database with whatever name you want
+Create a MongoDB database with whatever name you want
 
 
 ## Setup the ENVs
