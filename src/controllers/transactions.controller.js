@@ -55,3 +55,13 @@ export async function putTransactions(req, res) {
   }
   res.sendStatus(200);
 }
+
+export async function deleteAllTransactions(req, res) {
+  const { user } = res.locals;
+  try {
+    await db.collection("transactions").deleteMany({ userId: user._id });
+  } catch (error) {
+    res.sendStatus(500);
+  }
+  res.sendStatus(200);
+}
